@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="508f2f11-3421-464e-9e2b-371d798d5431" >
+		<http:listener-connection host="0.0.0.0" port="8090" />
+	</http:listener-config>
+	<flow name="testgitrepoFlow" doc:id="33dc6cc0-ffc3-4aee-b3d3-62ae548f17fb" >
+		<http:listener doc:name="Listener" doc:id="00027ee7-ab2c-4ed1-809a-ca75d6f31b70" config-ref="HTTP_Listener_config" path="/gittest"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="5bbfb000-e961-4293-aae5-6d820d2ac10d" />
+		<logger level="INFO" doc:name="Logger" doc:id="398eb21b-17bf-410e-a2a9-6ed5844bf897" message="Checking git"/>
+	</flow>
+</mule>
